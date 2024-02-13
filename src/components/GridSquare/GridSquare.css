@@ -1,11 +1,11 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: blueviolet;
+    color: #A12865;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -13,47 +13,73 @@
     margin-top: 7%;
 }
 
-.one{
+.one {
     min-height: 550px;
-    min-width:340px;
-    background-color: aqua;
+    min-width: 340px;
+    background-color: #9BCB37;
     margin-right: 20px;
+    border-radius: 1%;
+    display: flex;
+    justify-content: center; /* Yatayda merkezle */
+    align-items: center; /* Dikeyde merkezle */
+    text-align: center; /* Metni merkezle */
+    font-size: 26px;
 }
 
-.right-boxes{
+.right-boxes {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.two{
-
-    min-height: 270px;
-    min-width:550px;
-    background-color: green;
+.two, .three, .four {
+    display: flex;
+    justify-content: center; /* Yatayda merkezle */
+    align-items: center; /* Dikeyde merkezle */
+    text-align: center; /* Metni merkezle */
+    border-radius: 2%;
+    font-size: 26px;
 }
 
-.bottom-boxes{
+.one:hover, .two:hover, .three:hover, .four:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.two {
+    min-height: 270px;
+    min-width: 550px;
+    background-color: #9BCB37;
+}
+
+.bottom-boxes {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
 }
 
-.three{
+.three {
     min-height: 255px;
-    min-width:250px;
-    background-color: green;
+    min-width: 250px;
+    background-color: #9BCB37;
     margin-top: 25px;
     margin-right: 25px;
 }
 
-.four{
+.four {
     min-height: 255px;
-    min-width:250px;
-    background-color: yellow;
+    min-width: 250px;
+    background-color: #A12865;
     margin-top: 25px;
     margin-left: 25px;
+    flex-direction: column; /* İçeriği dikey yönde düzenler */
 }
+
+.four p {
+    margin: auto; /* <p> etiketini div içinde merkezler */
+    color: #9BCB37;
+    font-size: 26px;
+}
+
