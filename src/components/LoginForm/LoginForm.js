@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './LoginForm.css';
+import '../Register/RegisterForm'
 // Font Awesome ikonlarını import edin
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -49,7 +50,7 @@ function LoginForm() {
             />
           </div>
           <button type="submit">Log In</button>
-          <a href="/">Don't have an account? Register</a>
+          <Link to="/register"><a>Don't have an account? Register</a></Link>
         </form>
       </div>
     </div>

@@ -13,6 +13,11 @@
     margin-top: 7%;
 }
 
+p{
+
+    text-align: center;
+}
+
 .one {
     min-height: 550px;
     min-width: 340px;
@@ -24,6 +29,7 @@
     align-items: center; /* Dikeyde merkezle */
     text-align: center; /* Metni merkezle */
     font-size: 26px;
+    text-align: center;
 }
 
 .right-boxes {

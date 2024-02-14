@@ -36,10 +36,13 @@
     font-size: 30px;
     color: #343a40;
 
+    text-align: center;
+
 }
 
 .box p{
     color: #343a40;
+    text-align: center;
 }
 
 

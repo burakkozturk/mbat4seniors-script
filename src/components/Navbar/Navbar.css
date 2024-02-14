@@ -45,3 +45,20 @@ nav ul {
     color: #9BCB37;
     background-color: #A12865;
   }
+
+  nav ul li button {
+    padding: 15px 30px;
+    font-size: 24px; /* Butonun font boyutunu ayarlayın */
+    background-color: #A12865; /* Butonun arka plan rengini belirleyin */
+    color: white; /* Butonun yazı rengini belirleyin */
+    border: none; /* Kenarlık kaldırıldı */
+    border-radius: 8px; /* Kenar yuvarlaklığı */
+    cursor: pointer; /* Fare imlecini buton üzerine getirdiğinde el simgesi */
+    transition: .2s; /* Yumuşak renk geçişi efekti */
+  }
+  
+  nav ul li button:hover {
+    background-color: #9BCB37; /* Butonun üzerine gelindiğinde arka plan rengi */
+    color: #A12865; /* Butonun üzerine gelindiğinde yazı rengi */
+  }
+  

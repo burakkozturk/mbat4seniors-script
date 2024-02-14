@@ -4,7 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar/Navbar';
 import LoginForm from './components/LoginForm/LoginForm';
 import CourseGrid from './components/CourseGrid/CourseGrid';
-import Register from './components/Register/Register';
+import Register from './components/Register/RegisterForm';
 import Footer from './components/Footer/Footer';
 
 
