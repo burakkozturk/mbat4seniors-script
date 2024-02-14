@@ -9,18 +9,18 @@ function Navbar() {
   return (
     <nav>
       <div className="logo-container">
-          <img src='./logo.png' alt="Logo" />
-        </div>
+        <img src='./logo.png' alt="Logo" />
+      </div>
       <div className="navbar-container">
         <ul>
           <li><Link to="/">Courses</Link></li>
           {currentUser ? (
             <>
-              <li><Link to="/profile">Profil</Link></li>
-              <li><button onClick={logout}>Çıkış Yap</button></li>
+              <li><Link to="/profile">Profile</Link></li>
+              <li><button onClick={logout}>Sign Out</button></li>
             </>
           ) : (
-            <li><Link to="/login">Giriş Yap</Link></li>
+            <li><Link to="/login">Sign In</Link></li>
           )}
         </ul>
       </div>

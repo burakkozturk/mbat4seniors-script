@@ -1,0 +1,82 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F8F9FA;
+  }
+  
+  .login-section, .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 150px 150px;
+    border-radius: 4px;
+    background-color: #9BCB37;
+  }
+  
+  .login-form input,
+  .login-form button {
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px; /* Daha büyük font boyutu */
+    width: 100%; /* Eşit genişlik */
+  }
+  
+  .login-form input {
+    background-color: #e8e8e8; /* Inputlar için arka plan rengi */
+  }
+  
+  .login-form button {
+    background-color: #A12865;
+    color: white;
+    cursor: pointer;
+  }
+
+  .login-form input::placeholder {
+    color: #A12865; /* İstediğiniz renk kodu */
+    opacity: 1; /* Safari için */
+  }
+  
+  .login-form button:hover {
+    background-color: #A12865;
+  }
+  
+  .image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .login-section h1 {
+    display: flex;
+    justify-content: center;
+    color: #A12865;
+    }
+
+  .input-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .input-icon svg {
+    margin-right: 10px; /* İkon ile input arasında boşluk */
+    color: #A12865;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    color:#A12865;
+  }

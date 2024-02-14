@@ -1,7 +1,10 @@
-// components/LoginForm/LoginForm.js
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './LoginForm.css';
+// Font Awesome ikonlarını import edin
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -12,37 +15,43 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // login fonksiyonunu çağır
       login(username, password);
-      navigate('/'); // Başarılı girişten sonra ana sayfaya yönlendir
+      navigate('/');
     } catch (error) {
       console.error("Login hatası:", error);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Kullanıcı Adı:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Şifre:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Giriş Yap</button>
-      </form>
+    <div className="login-container">
+      <div className="login-section">
+        <form onSubmit={handleSubmit} className="login-form">
+
+          <h1>LOG IN</h1>
+          <div className="input-icon username">
+            <FontAwesomeIcon icon={faUser} /> {/* Kullanıcı adı ikonu */}
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-icon password">
+            <FontAwesomeIcon icon={faLock} /> {/* Şifre ikonu */}
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Log In</button>
+          <a href="/">Don't have an account? Register</a>
+        </form>
+      </div>
     </div>
   );
 }

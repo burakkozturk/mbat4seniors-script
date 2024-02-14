@@ -2,8 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar/Navbar';
-import GridSquare from './components/GridSquare/GridSquare';
 import LoginForm from './components/LoginForm/LoginForm';
+import CourseGrid from './components/CourseGrid/CourseGrid';
+import Register from './components/Register/Register';
+import Footer from './components/Footer/Footer';
+
+
 import './App.css';
 
 function App() {
@@ -13,10 +17,12 @@ function App() {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<GridSquare />} />
+            <Route path="/" element={<CourseGrid />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/register" element={<Register />} />
             {/* Diğer route'lar buraya eklenebilir */}
           </Routes>
+          <Footer />
         </div>
       </AuthProvider>
     </Router>
