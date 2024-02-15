@@ -6,6 +6,9 @@ import LoginForm from './components/LoginForm/LoginForm';
 import CourseGrid from './components/CourseGrid/CourseGrid';
 import Register from './components/Register/RegisterForm';
 import Footer from './components/Footer/Footer';
+import ProfilePage from './components/ProfilePage/ProfilePage';
+import AboutSection from './components/AboutSection/AboutSection';
+
 
 
 import './App.css';
@@ -16,10 +19,12 @@ function App() {
       <AuthProvider> {/* AuthProvider ile tüm uygulamayı sarmalayın */}
         <div className="App">
           <Navbar />
+
           <Routes>
             <Route path="/" element={<CourseGrid />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<ProfilePage />} />
             {/* Diğer route'lar buraya eklenebilir */}
           </Routes>
           <Footer />

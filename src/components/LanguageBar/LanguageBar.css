@@ -1,0 +1,14 @@
+/* LanguageBar.css */
+.language-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .language-bar img {
+    width: 40px; /* Bayrak boyutu */
+    height: 25px; /* Bayrak boyutu */
+    margin: 0 10px; /* Bayraklar arası boşluk */
+    cursor: pointer; /* Üzerine gelindiğinde imleç şeklini değiştir */
+  }
+  

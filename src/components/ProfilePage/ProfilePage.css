@@ -1,0 +1,102 @@
+/* ProfilePage.css */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eee;
+  }
+  
+  .profile-card {
+    margin-top: 5%;
+    border: 2px solid #A12865;
+    background-color: #A12865;
+    border-radius: 8px;
+    padding: 20px;
+    width: 600px;
+    height:650px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  
+  .progress-bars {
+    margin-top: 20px;
+  }
+  
+  .progress-bar {
+    margin-bottom: 50px;
+    display: flex; /* Flexbox konteyneri olarak ayarla */
+    flex-direction: column; /* Öğeleri dikey olarak hizala */
+    align-items: center; /* Öğeleri yatay olarak merkezle */
+  }
+  
+/* Tüm progress bar'lar için genel stil */
+progress {
+    width: 70%;
+    height:40px;
+    -webkit-appearance: none; /* Chrome, Safari ve Opera için */
+    appearance: none;
+    margin-top: 5px;
+  }
+  
+  /* Chrome, Safari ve Opera için bar rengini değiştir */
+  progress::-webkit-progress-value {
+    background-color: #9BCB37; /* Yeşil */
+  }
+  
+  /* Chrome, Safari ve Opera için arka plan rengini değiştir */
+  progress::-webkit-progress-bar {
+    background-color: #eee;
+  }
+  
+  /* Firefox için bar rengini değiştir */
+  progress::-moz-progress-bar {
+    background-color: #9BCB37; /* Yeşil */
+  }
+  
+  /* IE10+ için bar rengini değiştir */
+  progress {
+    color: #9BCB37; /* Bu, IE10+ için bar rengini belirler */
+  }
+  
+  /* İsteğe bağlı: Farklı progress bar'lar için farklı renkler */
+  .progress-bar-1::-webkit-progress-value {
+    background-color: #2196f3; /* Mavi */
+  }
+  
+  .progress-bar-2::-webkit-progress-value {
+    background-color: #f44336; /* Kırmızı */
+  }
+  
+  
+  /* ProfilePage.css'e eklemeler */
+.progress-bar label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.progress-bar span {
+  display: block;
+  margin-top: 5px;
+}
+
+.button-30 {
+  margin-top: 10px; /* Butonun üst boşluğunu ayarlar */
+  padding: 10px 20px; /* Butonun iç boşluğunu ayarlar */
+  background-color: #4CAF50; /* Butonun arka plan rengi */
+  color: white; /* Butonun yazı rengi */
+  border: none; /* Kenarlık kaldırılır */
+  cursor: pointer; /* İmleç, üzerine gelindiğinde pointer olur */
+  border-radius: 5px; 
+  
+}
+
+.button-30:hover {
+  background-color: #45a049; /* Butonun üzerine gelindiğinde arka plan rengi */
+}
+
+.button-update{
+  margin-top: 4%;
+  background-color: #2196f3;
+  width: 100%;
+}

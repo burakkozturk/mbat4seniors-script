@@ -27,7 +27,7 @@ nav ul {
   nav ul li {
     padding-top: 20px;
     display: inline;
-    margin-right: 100px;
+    margin-right: 20px;
   }
   
   nav ul li a {
@@ -62,3 +62,7 @@ nav ul {
     color: #A12865; /* Butonun üzerine gelindiğinde yazı rengi */
   }
   
+  .goBackButton{
+    color: #9BCB37;
+    background-color: #A12865;
+  }
