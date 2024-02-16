@@ -1,0 +1,60 @@
+.course-section-wrapper {
+    display: flex;
+    justify-content: center; /* Yatay ortalamayı sağlar */
+    align-items: center; /* Dikey ortalamayı sağlar */
+    height: 100vh; /* Ekranın tam yüksekliğini alır */
+}
+
+.course-section {
+    display: flex; 
+    /* Ekranın tamamını kaplaması için */
+    width:50%;
+    height: 75vh; /* Viewport'un tam yüksekliğini kullan */
+    
+}
+
+.units-list {
+    flex: 1; /* Esneklik ayarı ile sol kısım */
+    padding: 20px;
+    background-color: #f0f0f0;
+    min-width: 250px; /* Minimum genişlik */
+    max-width: 35%; /* Maksimum genişlik, ekranın %35'i */
+    height: auto; /* İçeriğe göre yükseklik ayarlanır */
+    overflow-y: auto; /* İçerik çok uzunsa dikey kaydırma çubuğu */
+}
+
+.units-list button {
+    width: calc(100% - 40px); /* Padding'i hesaba katarak butonun genişliğini ayarla */
+    padding: 10px; /* Buton içi boşluk */
+    margin: 5px 0; /* Butonlar arası dikey boşluk */
+    background-color: #4CAF50; /* Buton arka plan rengi */
+    color: white; /* Buton yazı rengi */
+    border: none; /* Kenarlık kaldır */
+    border-radius: 4px; /* Kenar yuvarlaklığı */
+    cursor: pointer; /* İmleç, üzerine gelindiğinde pointer olur */
+    font-size: 16px; /* Yazı boyutu */
+    transition: background-color 0.3s ease; /* Arka plan rengi değişim animasyonu */
+}
+
+.units-list button:hover {
+    background-color: #367B37; /* Butonun üzerine gelindiğinde arka plan rengi */
+}
+
+.units-list button:focus {
+    outline: none; /* Butona tıklandığında dış çizgiyi kaldır */
+}
+
+.units-list button.active {
+    background-color: #D6D6E7; /* Aktif buton için daha görünür bir arka plan rengi */
+    color: #343a40; /* Aktif buton için yazı rengini koyu bir renk yap */
+}
+.unit-content {
+    flex: 2; /* Esneklik ayarı ile sağ kısım */
+    padding: 20px;
+    background-color: #ffffff;
+    min-width: 350px; /* Minimum genişlik */
+    max-width: 65%; /* Maksimum genişlik, ekranın %65'i */
+    height: auto; /* İçeriğe göre yükseklik ayarlanır */
+    overflow-y: auto; /* İçerik çok uzunsa dikey kaydırma çubuğu */
+    border-left: 2px solid #ddd;
+}

@@ -7,7 +7,7 @@ import CourseGrid from './components/CourseGrid/CourseGrid';
 import Register from './components/Register/RegisterForm';
 import Footer from './components/Footer/Footer';
 import ProfilePage from './components/ProfilePage/ProfilePage';
-import AboutSection from './components/AboutSection/AboutSection';
+import CourseSection from './components/CourseSection/CourseSection';
 
 
 
@@ -25,6 +25,7 @@ function App() {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/course-section/:courseId" element={<CourseSection />} />
             {/* Diğer route'lar buraya eklenebilir */}
           </Routes>
           <Footer />
