@@ -3,37 +3,33 @@ import './CourseGrid.css';
 import { useNavigate } from 'react-router-dom';
 import AboutSection from '../AboutSection/AboutSection';
 
+// Örnek olarak, mevcut kursların bir listesini oluşturun
+const courses = [
+  { id: 1, name: 'International in-depth Analysis', imageUrl: './home-1.jpg', description: 'The use and impact of Mindfulness Based Art Therapy to improve the mental health of the individuals' },
+  { id: 2, name: 'MBAT4Seniors Manual', imageUrl: './home-4.jpg', description: 'Lorem ipsum dolor sit amet' },
+  { id: 3, name: 'MBAT4Seniors Tool Kit', imageUrl: './home-5.jpg', description: 'Lorem ipsum dolor sit amet' },
+];
 
 function CourseGrid() {
-    const navigate = useNavigate(); // useNavigate hook'unu kullanarak navigate fonksiyonunu oluşturun
+    const navigate = useNavigate();
 
-    // Örnek olarak, bir kursa tıklanınca çalışacak fonksiyon
+    // Kurs ID'si kullanılarak CourseSection komponentine yönlendirme yapın
     const startCourse = (courseId) => {
-        navigate(`/course-section/${courseId}`); // courseId ile dinamik bir yol oluşturun
+        navigate(`/course-section/${courseId}`);
     };
 
     return (
         <div>
             <AboutSection/>
             <div className='container'>
-                <div className='box'>
-                    <img src='./home-1.jpg' alt="Logo" />
-                    <h1>International in-depth Analysis</h1>
-                    <p>The use and impact of Mindfulness Based Art Therapy to improve the mental health of the individuals</p>
-                    <button className="button-30" role="button" onClick={() => startCourse('international-analysis')}>Start Course</button>
-                </div>
-                <div className='box'>
-                    <img src='./home-4.jpg' alt="Logo" />
-                    <h1>MBAT4Seniors Manual</h1>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <button className="button-30" role="button" onClick={() => startCourse('mbat4seniors-manual')}>Start Course</button>
-                </div>
-                <div className='box'>
-                    <img src='./home-5.jpg' alt="Logo" />
-                    <h1>MBAT4Seniors Tool Kit</h1>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <button className="button-30" role="button" onClick={() => startCourse('mbat4seniors-toolkit')}>Start Course</button>
-                </div>
+                {courses.map((course) => (
+                    <div key={course.id} className='box'>
+                        <img src={course.imageUrl} alt="Logo" />
+                        <h1>{course.name}</h1>
+                        <p>{course.description}</p>
+                        <button className="button-30" onClick={() => startCourse(course.id)}>Start Course</button>
+                    </div>
+                ))}
             </div>
         </div>
     );

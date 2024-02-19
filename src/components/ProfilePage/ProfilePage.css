@@ -13,7 +13,7 @@
     border-radius: 8px;
     padding: 20px;
     width: 600px;
-    height:650px;
+    height:700px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
@@ -96,7 +96,7 @@ progress {
 }
 
 .button-update{
-  margin-top: 4%;
+  margin-top:0;
   background-color: #2196f3;
   width: 100%;
 }

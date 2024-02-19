@@ -26,6 +26,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/course-section/:courseId" element={<CourseSection />} />
+            
             {/* Diğer route'lar buraya eklenebilir */}
           </Routes>
           <Footer />

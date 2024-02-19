@@ -2,30 +2,63 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterForm.css'; // Özel CSS stilinizi burada belirtin
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function RegisterForm() {
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Burada kullanıcı kayıt işlemini gerçekleştirecek kodu ekleyin
-    // Örneğin, bir API'ye kayıt bilgilerini gönderme
-    console.log("Kullanıcı kaydedildi:", username, email, password);
-    // Kayıt başarılı olduktan sonra giriş sayfasına yönlendirme
-    navigate('/login');
+
+    // Kullanıcı kayıt işlemini gerçekleştir
+    const user = {
+      name: name,
+      username: username,
+      password: password,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/auth/addNewUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Kayıt Başarılı:", data);
+        // Kayıt başarılıysa, kullanıcıyı giriş sayfasına yönlendir
+        navigate('/login');
+      } else {
+        // Sunucu tarafından bir hata mesajı gönderilirse bu mesajı göster
+        console.error("Kayıt başarısız.");
+      }
+    } catch (error) {
+      console.error("Kayıt sırasında hata oluştu:", error);
+    }
   };
 
   return (
     <div className="register-container">
       <div className="register-section">
         <form onSubmit={handleSubmit} className="register-form">
-
           <h1>REGISTER</h1>
-          <div className="input-icon username">
+          <div className="input-icon">
+            <FontAwesomeIcon icon={faUser} />
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-icon">
             <FontAwesomeIcon icon={faUser} />
             <input
               type="text"
@@ -35,17 +68,7 @@ function RegisterForm() {
               required
             />
           </div>
-          <div className="input-icon email">
-            <FontAwesomeIcon icon={faEnvelope} />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-icon password">
+          <div className="input-icon">
             <FontAwesomeIcon icon={faLock} />
             <input
               type="password"

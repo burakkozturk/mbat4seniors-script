@@ -1,12 +1,37 @@
-// components/ProfilePage.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import './ProfilePage.css'; // Stil dosyasını import edin
-import CourseGrid from '../CourseGrid/CourseGrid';
-import LanguageBar from '../LanguageBar/LanguageBar';
+import './ProfilePage.css';
 
 function ProfilePage() {
-    const { currentUser } = useAuth(); // Kullanıcı adını almak için AuthContext'i kullanın
+    const { currentUser } = useAuth();
+    const [progressValues, setProgressValues] = useState({ c1Status: 0, c2Status: 0, c3Status: 0 });
+
+    useEffect(() => {
+        // currentUser.username mevcut olduğunda API isteğini yap
+        if(currentUser && currentUser.username) {
+            fetchProgress(currentUser.username);
+        }
+    }, [currentUser]); // currentUser değiştiğinde useEffect tetiklenecek
+
+    const fetchProgress = (username) => {
+        fetch(`http://localhost:8080/auth/progress/${username}`)
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setProgressValues({
+                    c1Status: data.c1Status * 10, // API'den gelen değerleri kullan
+                    c2Status: data.c2Status * 10,
+                    c3Status: data.c3Status * 10,
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    };
 
     return (
         <div>
@@ -15,23 +40,27 @@ function ProfilePage() {
                     <h2>Welcome {currentUser?.username}</h2>
                     <div className="progress-bars">
                         <div className="progress-bar">
-                            <label>International in-depth Analysis - 70%</label>
-                            <progress value="70" max="100"></progress>
-                            <button class="button-30" role="button">Update Progress</button> {/* Buton */}
+                            <label>International in-depth Analysis</label>
+                            <progress value={progressValues.c1Status} max="100"></progress>
+                            <button class="button-30" role="button">Start Course</button>
+                
                         </div>
                         <div className="progress-bar">
-                            <label>MBAT4Seniors Manual - 40%</label>
-                            <progress value="40" max="100"></progress>
-                            <button class="button-30" role="button">Update Progress</button> {/* Buton */}
+                            <label>MBAT4Seniors Manual</label>
+                            <progress value={progressValues.c2Status} max="100"></progress>
+                            <button class="button-30" role="button">Start Course</button>
+                
                         </div>
                         <div className="progress-bar">
-                            <label>MBAT4Seniors Tool Kit - 40%</label>
-                            <progress value="40" max="100"></progress>
-                            <button class="button-30" role="button">Update Progress</button> {/* Buton */}
-                            <button class="button-30 button-update" role="button">Update Profile</button>
+                            <label>MBAT4Seniors Tool Kit</label>
+                            <progress value={progressValues.c3Status} max="100"></progress>
+                            <button class="button-30" role="button">Start Course</button>
+                
                         </div>
-
+                        
                     </div>
+                    <button class="button-30 button-update" role="button">Update Profile</button>
+                
                 </div>
             </div>
 

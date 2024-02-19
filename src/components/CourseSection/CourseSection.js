@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import './CourseSection.css';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './CourseSection.css';
 
 function CourseSection() {
-    const [activeContent, setActiveContent] = useState("Kurs içeriği burada gösterilecek.");
-    const [activeUnitId, setActiveUnitId] = useState(null); // Aktif ünite ID'si için yeni state
-    const { courseId } = useParams(); // URL'den courseId parametresini al
+    const [units, setUnits] = useState([]);
+    const [activeContent, setActiveContent] = useState("");
+    const { courseId } = useParams();
 
-    // Örnek kurs üniteleri
-    const units = [
-        { id: 1, title: "Ünite 1", content: "Ünite 1 İçeriği" },
-        { id: 2, title: "Ünite 2", content: "Ünite 2 İçeriği" },
-        { id: 3, title: "Ünite 3", content: "Ünite 3 İçeriği" },
-    ];
+    useEffect(() => {
+        // API'den ders ünitelerini çekme
+        const fetchUnits = async () => {
+            console.log(courseId); // courseId değerini konsolda kontrol et
+            const response = await fetch(`http://localhost:8080/api/courses/${courseId}/units`);
+            if(response.ok) {
+                const data = await response.json();
+                setUnits(data);
+                // Varsayılan olarak ilk ünitenin içeriğini göster
+                if(data.length > 0) {
+                    setActiveContent(data[0].content);
+                }
+            }
+        };
 
-    const handleUnitClick = (id, content) => {
-        setActiveUnitId(id); // Aktif ünite ID'sini güncelle
-        setActiveContent(content); // Aktif içeriği güncelle
+        fetchUnits();
+    }, [courseId]); // courseId değiştiğinde useEffect tekrar çalışır
+
+    const handleUnitClick = (content) => {
+        setActiveContent(content);
     };
 
     return (
@@ -26,8 +36,9 @@ function CourseSection() {
                     {units.map((unit) => (
                         <button 
                           key={unit.id} 
-                          className={activeUnitId === unit.id ? 'active' : ''} // Aktif üniteye göre sınıf ekleme
-                          onClick={() => handleUnitClick(unit.id, unit.content)}>
+                          className="unit-button"
+                          onClick={() => handleUnitClick(unit.content)}
+                        >
                             {unit.title}
                         </button>
                     ))}
