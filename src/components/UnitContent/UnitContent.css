@@ -1,0 +1,97 @@
+.unit-content {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.unit-content h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.content-list .content-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-list .content-item h3 {
+    margin-top: 0;
+}
+
+.content-list .content-item p {
+    color: red;
+}
+
+.p-obj p{
+    color: red;
+}
+.done-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50; /* Yeşil arka plan */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.done-button:hover {
+    background-color: #45a049;
+}
+
+.next-button, .done-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff; /* Mavi arka plan */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-button:hover, .done-button:hover {
+    background-color: #0056b3;
+}
+
+.content-item p {
+    color: #333; /* Koyu gri renk */
+}
+
+
+.view-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #ff5722; /* Turuncu arka plan */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.view-button:hover {
+    background-color: #e64a19;
+}
+.quiz-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-left: 10px; /* Diğer butonlardan biraz ayrılması için */
+    background-color: #673ab7; /* Mor arka plan */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quiz-button:hover {
+    background-color: #5e35b1;
+}

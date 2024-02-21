@@ -15,7 +15,7 @@ function CourseGrid() {
 
     // Kurs ID'si kullanılarak CourseSection komponentine yönlendirme yapın
     const startCourse = (courseId) => {
-        navigate(`/course-section/${courseId}`);
+        navigate(`/unit-detail/${courseId}`);
     };
 
     return (

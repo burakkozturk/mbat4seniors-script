@@ -7,9 +7,9 @@ import CourseGrid from './components/CourseGrid/CourseGrid';
 import Register from './components/Register/RegisterForm';
 import Footer from './components/Footer/Footer';
 import ProfilePage from './components/ProfilePage/ProfilePage';
-import CourseSection from './components/CourseSection/CourseSection';
-
-
+import UnitDetail from './components/UnitDetail/UnitDetail';
+import UnitContent from './components/UnitContent/UnitContent';
+import QuizPage from './components/QuizPage/QuizPage';
 
 import './App.css';
 
@@ -25,8 +25,10 @@ function App() {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/course-section/:courseId" element={<CourseSection />} />
-            
+            <Route path="/unit-detail/:courseId" element={<UnitDetail />} />
+            <Route path="/unit-content/:unitId" element={<UnitContent />} />
+            <Route path="/quizzes/:unitId" element={<QuizPage />} />
+              
             {/* Diğer route'lar buraya eklenebilir */}
           </Routes>
           <Footer />
