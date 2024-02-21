@@ -10,7 +10,7 @@ function QuizPage() {
     useEffect(() => {
         const fetchQuizData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/quizzes/units/${unitId}/quizzes`);
+                const response = await fetch(`http://51.20.106.123:8080/api/quizzes/units/${unitId}/quizzes`);
                 if (!response.ok) {
                     throw new Error('Quiz data could not be fetched');
                 }

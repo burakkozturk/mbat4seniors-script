@@ -14,17 +14,17 @@ function UnitContent() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const contentsResponse = await fetch(`http://localhost:8080/api/contents/unit/${unitId}`);
+                const contentsResponse = await fetch(`http://51.20.106.123:8080/api/contents/unit/${unitId}`);
                 if (!contentsResponse.ok) throw new Error('Content could not be loaded');
                 const contentsData = await contentsResponse.json();
                 setContents(contentsData);
 
-                const unitDetailsResponse = await fetch(`http://localhost:8080/api/units/${unitId}`);
+                const unitDetailsResponse = await fetch(`http://51.20.106.123:8080/api/units/${unitId}`);
                 if (!unitDetailsResponse.ok) throw new Error('Unit details could not be fetched');
                 const unitDetailsData = await unitDetailsResponse.json();
                 setUnitDetails(unitDetailsData);
 
-                const quizExistenceResponse = await fetch(`http://localhost:8080/api/quizzes/units/${unitId}/hasQuiz`);
+                const quizExistenceResponse = await fetch(`http://51.20.106.123:8080/api/quizzes/units/${unitId}/hasQuiz`);
                 if (!quizExistenceResponse.ok) throw new Error('Could not check quiz existence');
                 const hasQuizText = await quizExistenceResponse.text();
                 setHasQuiz(hasQuizText.toLowerCase() === 'true');

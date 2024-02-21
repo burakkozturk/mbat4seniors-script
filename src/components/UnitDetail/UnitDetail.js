@@ -10,7 +10,7 @@ function UnitDetail() {
     useEffect(() => {
         const fetchUnits = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/courses/${courseId}/units`);
+                const response = await fetch(`http://51.20.106.123:8080/api/courses/${courseId}/units`);
                 if (!response.ok) throw new Error('Veri yüklenemedi');
                 const data = await response.json();
                 setUnits(data);

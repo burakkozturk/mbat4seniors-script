@@ -28,17 +28,17 @@ function Navbar() {
       <div className="navbar-container">
         <ul>
           <li>
-            <Link className='goBackButton' to="/" title="Go Back to Website">
-               {/* FontAwesome ikonunu kullanarak */}
-              <span>Go Back 2 Website</span>
-            </Link>
+            <a className='goBackButton' href="https://mbat4seniors.com" rel="noopener noreferrer" title="Go Back to Website">
+              <span>Go Back to Website</span>
+            </a>
+
           </li>
           <li><Link to="/">Courses</Link></li>
           {currentUser ? (
             <>
               <li><Link to="/profile">Profile</Link></li>
               <li>
-                <button onClick={handleLogout} title="Sign Out"> {/* Çıkış yap işlemini handleLogout ile tetikleyin */}
+                <button onClick={handleLogout} title="Sign Out"> 
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </button>
               </li>

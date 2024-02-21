@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom'; // useNavigate hook'unu import edin
+import UpdateProfileForm from '../UpdateProfileForm/UpdateProfileForm';
 import './ProfilePage.css';
 
 function ProfilePage() {
     const { currentUser } = useAuth();
     const [progressValues, setProgressValues] = useState({ c1Status: 0, c2Status: 0, c3Status: 0 });
+    const navigate = useNavigate(); // useNavigate hook'unu kullanarak bir navigate fonksiyonu oluşturun
 
     useEffect(() => {
         // currentUser.username mevcut olduğunda API isteğini yap
@@ -14,7 +17,7 @@ function ProfilePage() {
     }, [currentUser]); // currentUser değiştiğinde useEffect tetiklenecek
 
     const fetchProgress = (username) => {
-        fetch(`http://localhost:8080/auth/progress/${username}`)
+        fetch(`http://51.20.106.123:8080/auth/progress/${username}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error('Network response was not ok');
@@ -31,6 +34,9 @@ function ProfilePage() {
             .catch(error => {
                 console.error('Fetch error:', error);
             });
+    };
+    const handleUpdateProfileClick = () => {
+        navigate('/update-profile'); // 'Update Profile' butonuna tıklandığında, kullanıcıyı /update-profile URL'ine yönlendir
     };
 
     return (
@@ -59,8 +65,7 @@ function ProfilePage() {
                         </div>
                         
                     </div>
-                    <button class="button-30 button-update" role="button">Update Profile</button>
-                
+                    <button className="button-30 button-update" role="button" onClick={handleUpdateProfileClick}>Update Profile</button>
                 </div>
             </div>
 
