@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './QuizPage.css';
+import quizDataJSON from '../../data/quizzes/quiz-unit4.json'; // JSON dosyanızın yolu
 
 function QuizPage() {
     const { unitId } = useParams();
@@ -10,13 +11,13 @@ function QuizPage() {
     useEffect(() => {
         const fetchQuizData = async () => {
             try {
-                const response = await fetch(`http://51.20.106.123:8080/api/quizzes/units/${unitId}/quizzes`);
-                if (!response.ok) {
+                // JSON dosyasını doğrudan import ederek kullan
+                // Örnek: unitId'ye göre filtreleme yapabilirsiniz. Burada basit bir örnek verilmiştir.
+                const data = quizDataJSON.find(quiz => quiz.unitId.toString() === unitId); // unitId string olduğu için dönüşüm yapılıyor
+                if (!data) {
                     throw new Error('Quiz data could not be fetched');
                 }
-                const data = await response.json();
-                // Verinin ilk elemanını alıyoruz, daha genel bir kullanım için bu kısmı ayarlayabilirsiniz.
-                setQuizData(data[0]);
+                setQuizData(data);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -43,7 +44,7 @@ function QuizPage() {
 
         quizData.questions.forEach(question => {
             const correctOption = question.options.find(option => option.correct);
-            if (correctOption && userAnswers[`question-${question.id}`] == correctOption.id) {
+            if (correctOption && userAnswers[`question-${question.id}`] === correctOption.id.toString()) {
                 correctCount++;
             }
         });

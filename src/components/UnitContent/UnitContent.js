@@ -14,23 +14,15 @@ function UnitContent() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const contentsResponse = await fetch(`http://51.20.106.123:8080/api/contents/unit/${unitId}`);
-                if (!contentsResponse.ok) throw new Error('Content could not be loaded');
-                const contentsData = await contentsResponse.json();
-                setContents(contentsData);
-
-                const unitDetailsResponse = await fetch(`http://51.20.106.123:8080/api/units/${unitId}`);
-                if (!unitDetailsResponse.ok) throw new Error('Unit details could not be fetched');
-                const unitDetailsData = await unitDetailsResponse.json();
-                setUnitDetails(unitDetailsData);
-
-                const quizExistenceResponse = await fetch(`http://51.20.106.123:8080/api/quizzes/units/${unitId}/hasQuiz`);
-                if (!quizExistenceResponse.ok) throw new Error('Could not check quiz existence');
-                const hasQuizText = await quizExistenceResponse.text();
-                setHasQuiz(hasQuizText.toLowerCase() === 'true');
+                // Dinamik olarak ilgili unitId için JSON dosyasını import edin
+                const module = await import(`../../data/units/unit${unitId}.json`);
+                const data = module.default; // Eğer modülün default export'u varsa
+                setContents(data.contents);
+                setUnitDetails(data.unitDetails);
+                setHasQuiz(data.hasQuiz);
             } catch (error) {
                 console.error("Error:", error);
-                setError(error.toString());
+                setError('Failed to load unit data.');
             }
         }
 
@@ -39,8 +31,14 @@ function UnitContent() {
 
     const handleNext = () => setCurrentIndex(currentIndex < contents.length - 1 ? currentIndex + 1 : currentIndex);
     const handleDone = () => navigate(`/`);
-    const handleViewPdf = () => unitDetails.pdfUrl ? window.open(unitDetails.pdfUrl, '_blank') : alert('PDF URL not found for this unit');
-    const handleGoToQuiz = () => navigate(`/quizzes/${unitId}`);
+    const handleViewPdf = () => {
+        if (unitDetails && unitDetails.pdfUrl) {
+            window.open(unitDetails.pdfUrl, '_blank');
+        } else {
+            alert('PDF URL not found for this unit'); // Bu satır, PDF URL'si bulunamadığında konsola bilgi mesajı yazdırır.
+        }
+    };
+    const handleGoToQuiz = () => hasQuiz ? navigate(`/quizzes/${unitId}`) : console.log('No quiz available for this unit');
     
     const renderContentItem = (content) => (
         <>
@@ -55,7 +53,7 @@ function UnitContent() {
             {error && <p className="error">{error}</p>}
             {contents.length > 0 ? (
                 <div className="content-item">
-                    <h3>Content {currentIndex + 1}</h3>
+                    <h3>Content {currentIndex + 1} of {contents.length}</h3>
                     {renderContentItem(contents[currentIndex])}
                     <div className="content-navigation">
                         {currentIndex < contents.length - 1 ? (

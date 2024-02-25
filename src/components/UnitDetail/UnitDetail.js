@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // useNavigate'i import edin
+import { useParams, useNavigate } from 'react-router-dom';
 import './UnitDetail.css';
 
 function UnitDetail() {
     const [units, setUnits] = useState([]);
     const { courseId } = useParams();
-    const navigate = useNavigate(); // useNavigate hook'unu kullanın
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUnits = async () => {
+        // Dinamik olarak ilgili kursun JSON dosyasını yükle
+        const loadCourseUnits = async () => {
             try {
-                const response = await fetch(`http://51.20.106.123:8080/api/courses/${courseId}/units`);
-                if (!response.ok) throw new Error('Veri yüklenemedi');
-                const data = await response.json();
-                setUnits(data);
+                const unitsData = await import(`../../data/course${courseId}.json`);
+                setUnits(unitsData.default);
             } catch (error) {
-                console.error("Hata:", error);
+                console.error("Dosya yüklenirken bir hata oluştu", error);
+                setUnits([]);
             }
         };
 
-        fetchUnits();
+        loadCourseUnits();
     }, [courseId]);
 
-    // Üniteye tıklanınca çağrılacak fonksiyon
     const handleUnitClick = (unitId) => {
-        navigate(`/unit-content/${unitId}`); // Ünitenin içeriklerini gösteren sayfaya yönlendir
+        navigate(`/unit-content/${unitId}`);
     };
 
     return (
@@ -32,7 +31,7 @@ function UnitDetail() {
             <div className="unit-detail">
                 <h2>Course Units</h2>
                 <ul className="unit-list">
-                    {units.map(unit => (
+                    {units.map((unit) => (
                         <li key={unit.id} onClick={() => handleUnitClick(unit.id)}>
                             {unit.title}
                         </li>
