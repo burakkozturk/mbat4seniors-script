@@ -18,7 +18,7 @@ function ProfilePage() {
     }, [currentUser]); // currentUser değiştiğinde useEffect tetiklenecek
 
     const fetchProgress = (username) => {
-        fetch(`http://localhost:8080/auth/progress/${username}`)
+        fetch(`https://mbat4seniors-8ed6b159bacd.herokuapp.com/auth/progress/${username}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error('Network response was not ok');

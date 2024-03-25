@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/generateToken', {
+      const response = await fetch('https://mbat4seniors-8ed6b159bacd.herokuapp.com/auth/generateToken', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

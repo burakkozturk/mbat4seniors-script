@@ -21,7 +21,7 @@ function RegisterForm() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/auth/addNewUser', {
+      const response = await fetch('https://mbat4seniors-8ed6b159bacd.herokuapp.com/auth/addNewUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
