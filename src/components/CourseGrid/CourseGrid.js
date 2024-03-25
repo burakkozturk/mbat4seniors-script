@@ -1,36 +1,50 @@
-import React from 'react';
-import './CourseGrid.css';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AboutSection from '../AboutSection/AboutSection';
+import LanguageBar from '../LanguageBar/LanguageBar';
+import { useLanguage } from '../../context/LanguageContext'; // Context'i kullanmak için
+import './CourseGrid.css'; // Stil dosyasını import edin
 
-// Örnek olarak, mevcut kursların bir listesini oluşturun
-const courses = [
-  { id: 1, name: 'International in-depth Analysis', imageUrl: './home-1.jpg', description: 'The use and impact of Mindfulness Based Art Therapy to improve the mental health of the individuals' },
-  { id: 2, name: 'MBAT4Seniors Manual', imageUrl: './home-4.jpg', description: 'Lorem ipsum dolor sit amet' },
-  { id: 3, name: 'MBAT4Seniors Tool Kit', imageUrl: './home-5.jpg', description: 'Lorem ipsum dolor sit amet' },
-];
 
 function CourseGrid() {
     const navigate = useNavigate();
+    const { language } = useLanguage();
+    const [courses, setCourses] = useState([]);
+    const [startCourseButtonText, setStartCourseButtonText] = useState("");
 
-    // Kurs ID'si kullanılarak CourseSection komponentine yönlendirme yapın
+    useEffect(() => {
+        // Dil dosyası çekme işlemi
+        fetch(`/lang/${language}.json`)
+            .then((response) => response.json())
+            .then((data) => {
+                setCourses(data.courses);
+                setStartCourseButtonText(data.startCourse);
+            })
+            .catch((error) => console.error("Veri yüklenirken bir hata oluştu:", error));
+    }, [language]);
+
     const startCourse = (courseId) => {
-        navigate(`/unit-detail/${courseId}`);
+        navigate(`/unit-detail/${courseId}`, { state: { language } });
     };
 
+    
+
+    // Kurslar ve butonlar
     return (
         <div>
-            <AboutSection/>
+            <LanguageBar />
             <div className='container'>
                 {courses.map((course) => (
                     <div key={course.id} className='box'>
-                        <img src={course.imageUrl} alt="Logo" />
+                        <img src={course.imageUrl} alt="Kurs Logosu" />
                         <h1>{course.name}</h1>
-                        <p>{course.description}</p>
-                        <button className="button-30" onClick={() => startCourse(course.id)}>Start Course</button>
+                        <button className="button-30" onClick={() => startCourse(course.id)}>
+                            {startCourseButtonText}
+                        </button>
                     </div>
                 ))}
             </div>
+            <AboutSection />
         </div>
     );
 }

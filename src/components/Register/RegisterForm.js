@@ -21,7 +21,7 @@ function RegisterForm() {
     };
 
     try {
-      const response = await fetch('http://51.20.106.123:8080/auth/addNewUser', {
+      const response = await fetch('http://localhost:8080/auth/addNewUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

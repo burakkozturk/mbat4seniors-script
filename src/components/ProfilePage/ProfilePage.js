@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom'; // useNavigate hook'unu import edin
 import UpdateProfileForm from '../UpdateProfileForm/UpdateProfileForm';
 import './ProfilePage.css';
+import ProgressLog from '../ProgressLog/ProgressLog';
 
 function ProfilePage() {
     const { currentUser } = useAuth();
@@ -17,7 +18,7 @@ function ProfilePage() {
     }, [currentUser]); // currentUser değiştiğinde useEffect tetiklenecek
 
     const fetchProgress = (username) => {
-        fetch(`http://51.20.106.123:8080/auth/progress/${username}`)
+        fetch(`http://localhost:8080/auth/progress/${username}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error('Network response was not ok');
@@ -95,7 +96,9 @@ function ProfilePage() {
                 </div>
 
             </div>
+
         </div>
+
     );
 }
 

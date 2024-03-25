@@ -10,7 +10,7 @@
     margin-bottom: 20px;
 }
 
-.content-list .content-item {
+.content-item {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 20px;
@@ -19,77 +19,60 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.content-list .content-item h3 {
+.content-item h3 {
     margin-top: 0;
-}
-
-.content-list .content-item p {
-    color: red;
-}
-
-.p-obj p{
-    color: red;
-}
-.done-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #4CAF50; /* Yeşil arka plan */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.done-button:hover {
-    background-color: #45a049;
-}
-
-.next-button, .done-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #007bff; /* Mavi arka plan */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.next-button:hover, .done-button:hover {
-    background-color: #0056b3;
 }
 
 .content-item p {
     color: #333; /* Koyu gri renk */
 }
 
+.content-item img {
+    max-width: 100%; /* İmgenin en fazla kapsayıcısının genişliği kadar olmasını sağlar */
+    height: auto; /* İmgenin orijinal oranını korur */
+    display: block; /* İmgeyi blok seviyesinde bir öğe olarak ayarlar */
+    margin: 0 auto; /* İmgeyi yatay olarak ortalar */
+}
 
-.view-button {
+/* Buton stilleri */
+.done-button, .next-button, .view-button, .quiz-button {
     padding: 10px 20px;
     margin-top: 20px;
-    margin-left: 20px;
-    background-color: #ff5722; /* Turuncu arka plan */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
+}
+
+.done-button {
+    background-color: #4CAF50; /* Yeşil */
+}
+
+.done-button:hover {
+    background-color: #45a049;
+}
+
+.next-button {
+    background-color: #007bff; /* Mavi */
+}
+
+.next-button:hover {
+    background-color: #0056b3;
+}
+
+.view-button {
+    margin-left: 20px;
+    background-color: #ff5722; /* Turuncu */
 }
 
 .view-button:hover {
     background-color: #e64a19;
 }
+
 .quiz-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    margin-left: 10px; /* Diğer butonlardan biraz ayrılması için */
-    background-color: #673ab7; /* Mor arka plan */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    margin-left: 10px;
+    background-color: #673ab7; /* Mor */
 }
 
 .quiz-button:hover {
